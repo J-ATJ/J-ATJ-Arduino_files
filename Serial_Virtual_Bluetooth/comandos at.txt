@@ -1,0 +1,99 @@
+   
+Configurando nuestro módulo HC-05 como esclavo:
+Realizaremos un ejemplo para configurar nuestro modulo con las siguientes características:
+- Modo o role: Esclavo
+- Nombre: Robot
+- Código de emparejamiento: 1212
+- Velocidad o Baud rate: 9600 baudios
+  
+A continuación se muestra los pasos para realizar la configuración:
+- Entrar en modo AT 1 o Modo AT 2
+- Verificar si estamos en modo AT
+Enviar: AT
+Recibe: OK
+- Establecer el Role como Esclavo
+Enviar:  AT+ROLE=0
+Respuesta: OK
+- Configurar el Nombre del modulo
+Enviar: AT+NAME=Robot
+Respuesta: OK
+- Establecer el Pin de vinculación
+Enviar: AT+PSWD=1212
+Respuesta: OK
+- Configura la Velocidad
+Enviar: AT+UART=9600,0,0
+Respuesta: OK
+- Verificar los parámetros cambiados
+Enviar: 
+AT+ROLE?
+AT+PSWD?
+AT+UART?
+Respuesta:
++ROLE:0
+OK
++PSWD:1212
+OK
++UART:9600,0,0
+OK
+- Resetear el modulo
+Enviar: AT+RESET
+Respuesta: OK
+  
+En la siguiente imagen podemos ver la secuencia de datos recibidos por el monitor serial en el mismo orden en que se realizaron los pasos anteriores.
+
+
+
+
+Configurando nuestro módulo HC-05 como Maestro:
+Ahora veremos un ejemplo para configurar nuestro modulo como maestro, con las siguientes características:
+-Modo o role: Maestro
+-Nombre: Naylamp
+-Código de emparejamiento: 1465 (La misma que el dispositivo a conectarse)
+-Velocidad o Baud rate: 57600 baudios
+-Dirección del dispositivo esclavo con el que se desea conectar: 98:D3:31:20:3A:D0
+  
+A continuación se muestra los pasos para realizar la configuración:
+- Entrar en modo AT 1 o Modo AT 2
+- Verificar si estamos en modo AT
+Enviar: AT
+Recibe: OK
+- Establecer el Role como Maestro
+Enviar:  AT+ROLE=1
+Respuesta: OK
+- Configurar el Nombre del modulo
+Enviar: AT+NAME=Naylamp
+Respuesta: OK
+- Establecer el Pin de vinculación
+Enviar: AT+PSWD=1465
+Respuesta: OK
+- Configura la Velocidad
+Enviar: AT+UART=57600,0,0
+Respuesta: OK
+- Configurar el modo de conexión
+Enviar: AT+CMODE=0
+Respuesta: OK
+- Especificar la dirección del dispositivo a conectarse
+Enviar: AT+BIND=98D3,31,203AD0
+Respuesta: OK
+- Verificar los parámetros cambiados
+Enviar: 
+AT+ROLE?
+AT+PSWD?
+AT+UART?
+AT+CMODE?
+AT+BIND?
+Respuesta:
++ROLE:1
+OK
++PSWD:1465
+OK
++UART:57600,0,0
+OK
++CMOD:0
+OK
++BIND:98d3:31:203ad0
+OK
+- Resetear el modulo
+Enviar: AT+RESET
+Respuesta: OK
+   
